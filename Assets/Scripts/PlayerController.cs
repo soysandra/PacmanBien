@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text textoScore;
     public int puntuacion = 173;
     public GameObject panelVictoria;
+    public GameObject panelDerrota;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -25,11 +27,26 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Si el objeto tiene la etiqueta "Enemigo"
+        if (other.CompareTag("Enemigo"))
+        {
+            Derrota();
+            return;
+        }
+
+        // Si NO es enemigo, asumimos que es un punto
         Destroy(other.gameObject);
         puntuacion--;
         textoScore.text = "Points: " + puntuacion;
         Victoria();
     }
+
+    void Derrota()
+    {
+        Time.timeScale = 0;
+        panelDerrota.SetActive(true);
+    }
+
 
     void Victoria()
     {
@@ -53,5 +70,3 @@ public class PlayerController : MonoBehaviour
 #endif
     }
 }
-
-

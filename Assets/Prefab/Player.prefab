@@ -204,3 +204,6 @@ MonoBehaviour:
   textoScore: {fileID: 0}
   puntuacion: 174
   panelVictoria: {fileID: 0}
+  panelDerrota: {fileID: 0}
+  modoCheto: 0
+  duracionCheto: 6
